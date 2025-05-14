@@ -1,0 +1,114 @@
+/* Import fonts first */
+@import './fonts.css';
+
+/* Then include Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import animation utilities */
+@import './animations.css';
+
+/* Custom selection styling for a professional touch */
+@layer base {
+  ::selection {
+    @apply bg-accent-blue/20 text-ink-900 dark:bg-accent-blue/30 dark:text-paper-50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Improve focus visibility for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-blue/70 dark:outline-accent-blue/50;
+  }
+  
+  /* Better scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-paper-200 dark:bg-ink-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-paper-400 dark:bg-ink-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-paper-500 dark:bg-ink-500;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-feature-standard {
+    font-feature-settings: 'liga', 'kern', 'calt';
+  }
+  
+  .font-feature-nums {
+    font-feature-settings: 'tnum', 'lnum';
+  }
+}
+
+/* Newspaper-specific components */
+@layer components {
+  /* Typographic refinements */
+  .event-dropcap::first-letter {
+    @apply font-serif font-bold text-4xl leading-none float-left mr-2 text-accent-blue dark:text-accent-blue/90;
+  }
+  
+  .event-heading {
+    @apply font-display text-balance font-bold text-ink-900 dark:text-paper-50 leading-tight;
+  }
+  
+  .event-subheading {
+    @apply font-serif italic text-ink-600 dark:text-paper-400 leading-normal;
+  }
+  
+  /* Quote styling */
+  .fancy-quote {
+    @apply font-serif italic text-lg leading-relaxed p-4 pl-6 border-l-4 border-accent-gold/70 bg-paper-100 dark:bg-ink-800 text-ink-700 dark:text-paper-300;
+  }
+  
+  /* Link styling */
+  .event-link {
+    @apply text-accent-blue dark:text-accent-blue/90 hover:underline underline-offset-2 decoration-1 decoration-accent-blue/70 dark:decoration-accent-blue/60 transition-all;
+  }
+  
+  /* Card-style refinements */
+  .paper-card {
+    @apply bg-paper-50 dark:bg-ink-800 border border-paper-300 dark:border-ink-700 
+           transition-all duration-200 hover:shadow-newspaper-lg;
+  }
+}
+
+/* Root CSS variables for theme colors - maintained for backward compatibility */
+:root {
+  --primary-color: theme('colors.green.700');
+  --secondary-color: theme('colors.green.600');
+  --text-color: theme('colors.ink.800');
+  --text-secondary: theme('colors.ink.500');
+  --bg-color: theme('colors.paper.50');
+  --bg-secondary: theme('colors.paper.100');
+  --border-color: theme('colors.paper.300');
+  --transition-speed: 0.3s;
+  --card-background: var(--bg-color);
+  --error-color: theme('colors.accent.red');
+  --success-color: theme('colors.green.700');
+}
+
+.dark-mode {
+  --text-color: theme('colors.paper.200');
+  --text-secondary: theme('colors.paper.400');
+  --bg-color: theme('colors.ink.900');
+  --bg-secondary: theme('colors.ink.800');
+  --border-color: theme('colors.ink.700');
+  --card-background: var(--bg-secondary);
+}

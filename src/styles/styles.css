@@ -1,0 +1,51 @@
+/* Base styling for the LiveWire application */
+/* :root variables are now in index.css or can be moved to Tailwind config */
+/* Dark mode variables are now in index.css or handled by Tailwind's dark: prefix */
+/* body styles are now in index.css */
+/* Custom scrollbar styling is now in index.css */
+/* App container - layout handled by App.tsx with Tailwind */
+/* Header styles - if Header component is used, style it with Tailwind or specific CSS */
+/* Keep animations if not handled by animations.css or Tailwind */
+@keyframes lightning {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Example: .btn class can be replaced by Tailwind button classes */
+/* Loading and error states - use Tailwind classes directly in components */
+/* Footer - if Footer component is used, style it with Tailwind or specific CSS */
+/* Responsive styles - Tailwind handles responsiveness with prefixes (sm:, md:, lg:) */
+/* Specific component styles that are complex or not easily done with Tailwind can remain */
+/* For example, .event-title-underline if it's a very custom effect */
+.event-title-underline {
+  display: block;
+  height: 3px;
+  width: 0;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  transition: width 0.3s ease;
+  background-color: theme('colors.green.700'); /* Updated to green color */
+}
+
+.news-event:hover .event-title-underline {
+  width: 100%;
+}
+
+/* Review all styles in this file. Many can be removed if Tailwind is adopted fully. */
+/* For instance, .action-button and its variants can be replaced by Tailwind classes. */
+/* The .dark-mode utility classes for specific elements are now handled by Tailwind's dark: prefix */
+/* Loading bar animation - keep if used and specific */
+@keyframes loadingBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.loading-bar {
+  animation: loadingBar 2s linear;
+  /* position, height, background-color should be applied where used or defined here if it's a global utility */
+}
