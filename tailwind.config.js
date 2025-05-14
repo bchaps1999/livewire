@@ -64,9 +64,12 @@ export default {
         'quantum': '#f1c40f',      // Yellow for quantum
       },
       boxShadow: {
-        'newspaper': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
-        'newspaper-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+        'newspaper': '0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1)', // Enhanced shadow
+        'newspaper-lg': '0 10px 20px -3px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.08)',
         'newspaper-inner': 'inset 0 2px 4px rgba(0, 0, 0, 0.04)',
+        'feed-item': '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)',
+        'card-edge': '0 1px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03)',
+        'feed-container': '0 2px 10px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.1)', // New shadow for feed container
       },
       typography: {
         DEFAULT: {
@@ -159,14 +162,21 @@ export default {
         'quantum': '#f1c40f', // Yellow for quantum computing
       },
       maxWidth: {
-        'feed': '42rem',
-        'sidebar': '16rem',
+        'feed': '60rem', // Increased from 72rem for an even wider feed
+        'sidebar': '20rem',
       },
       minHeight: {
         'card': '5rem',
       },
       gridTemplateColumns: {
         'feed': 'auto 1fr',
+      },
+      // Add border styles for more defined edges
+      borderWidth: {
+        'edge': '1px',
+      },
+      borderColor: {
+        'edge': 'rgba(0, 0, 0, 0.1)',
       },
     },
   },

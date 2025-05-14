@@ -1,13 +1,13 @@
 /* Import fonts first */
 @import './fonts.css';
 
+/* Import statements must come first */
+@import './animations.css';
+
 /* Then include Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import animation utilities */
-@import './animations.css';
 
 /* Custom selection styling for a professional touch */
 @layer base {
@@ -54,6 +54,12 @@
   
   .font-feature-nums {
     font-feature-settings: 'tnum', 'lnum';
+  }
+
+  /* Support for glassy effects with fallbacks */
+  .backdrop-blur-support {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import AppRoutes from './AppRoutes';
-// Import styles
-import './styles/animations.css'; 
-import './styles/styles.css'; 
-import './styles/feed.css';
+// Remove redundant style imports
+// import './styles/animations.css'; 
+// import './styles/styles.css'; 
+// import './styles/feed.css';
+// All styles are now imported from main.css in the entry point
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -41,7 +42,7 @@ const App: React.FC = () => {
           toggleDarkMode={toggleDarkMode}
         />
         {/* Main content area */}
-        <main className="flex-1 bg-gray-100 dark:bg-ink-900 overflow-y-auto">
+        <main className="flex-1 bg-grey-100 dark:bg-ink-900 overflow-y-auto p-4">
           <AppRoutes />
           
           {/* Add chat input at the bottom similar to sample */}

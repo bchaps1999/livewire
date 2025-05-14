@@ -39,7 +39,7 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ categorySlug, specialView }) => {
     } else if (specialView === 'annotated') {
       setCurrentChannel({ name: 'Annotated events', description: 'events you have annotated' });
     } else {
-      setCurrentChannel({ name: 'Today\'s Edition', description: 'Your personalized news digest' });
+      setCurrentChannel({ name: 'Today\'s Top Stories', description: 'Your personalized news digest' });
     }
   }, [categorySlug, specialView]);
 
@@ -79,9 +79,10 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ categorySlug, specialView }) => {
   });
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 bg-paper-100 dark:bg-ink-900 min-h-full">
-      <div className="mb-6 pb-5 border-b border-paper-300 dark:border-ink-700">
-        <div className="flex flex-col mb-4">
+    <div className="max-w-feed mx-auto px-4 sm:px-6 py-2 bg-paper-50 dark:bg-ink-900 min-h-full border border-paper-200 dark:border-ink-700 shadow-newspaper rounded-sm relative -mt-8">
+      {/* Glassy header that spans the entire feed */}
+      <div className="sticky -top-4 sm:-mx-6 px-4 sm:px-6 pt-1 pb-5 backdrop-blur-md bg-paper-50/90 dark:bg-ink-900/90 border-b border-paper-300 dark:border-ink-700 z-10 shadow-sm mb-6">
+        <div className="flex flex-col mb-4 mt-4">
           <span className="text-ink-500 dark:text-paper-400 text-sm mb-1 font-mono">{today}</span>
           <h1 className="text-4xl sm:text-5xl font-display font-bold text-ink-900 dark:text-paper-50 mb-1 leading-tight">
             {currentChannel?.name}
@@ -135,7 +136,7 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ categorySlug, specialView }) => {
         </div>
       ) : (
         <>
-          <div className="space-y-5" id="feed-items-container"> {/* Added space-y-5 for proper spacing between cards */}
+          <div className="space-y-5 pt-2" id="feed-items-container"> {/* Added pt-2 to create some space after the sticky header */}
             {currentevents.length > 0 ? (
               currentevents.map((event, index) => (
                 <Newsevent 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NotFound: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center bg-paper-50 dark:bg-ink-900">
+    <div className="max-w-feed mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center bg-paper-50 dark:bg-ink-900 border border-paper-200 dark:border-ink-700 shadow-newspaper rounded-sm">
       <div className="bg-paper-100 dark:bg-ink-800 p-8 rounded-sm border border-paper-300 dark:border-ink-700">
         <h2 className="text-3xl font-display font-bold text-ink-900 dark:text-paper-50 mb-4">404 - Page Not Found</h2>
         <p className="text-ink-600 dark:text-paper-400 mb-8 font-serif">The page you are looking for doesn't exist or has been moved.</p>

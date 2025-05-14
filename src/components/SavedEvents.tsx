@@ -49,7 +49,7 @@ const SavedEvents: React.FC = () => {
   });
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-paper-50 dark:bg-ink-900">
+    <div className="max-w-feed mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-paper-50 dark:bg-ink-900 border border-paper-200 dark:border-ink-700 shadow-newspaper rounded-sm">
       <div className="mb-8 pb-4 border-b border-paper-300 dark:border-ink-700">
         <div className="flex flex-col mb-4">
           <span className="text-ink-500 dark:text-paper-400 text-sm mb-1 font-serif">{today}</span>

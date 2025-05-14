@@ -82,12 +82,10 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) => {
       <div className="flex items-center space-x-3">
         <div className="p-2 bg-green-700 dark:bg-green-600 rounded-lg shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <circle cx="12" cy="12" r="6"></circle>
-            <circle cx="12" cy="12" r="2"></circle>
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
         </div>
-        <h1 className="text-2xl font-display font-bold text-ink-800 dark:text-paper-100">InsightFeed</h1>
+        <h1 className="text-2xl font-display font-bold text-ink-800 dark:text-paper-100">Livewire</h1>
       </div>
       
       {/* Main Nav */}
