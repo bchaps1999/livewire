@@ -1,20 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html", // Updated to be more generic
-    "./feed.html", 
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./js/**/*.js",
-    "./fonts/**/*.{woff,woff2,ttf,otf}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
   ],
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Georgia', 'serif'],
+        serif: ['Baskerville', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        display: ['Fraunces', 'serif'], // For large headings
+        display: ['Baskerville', 'Georgia', 'serif'], // For large headings
       },
       colors: {
         paper: {
@@ -162,14 +159,14 @@ export default {
         'quantum': '#f1c40f', // Yellow for quantum computing
       },
       maxWidth: {
-        'feed': '60rem', // Increased from 72rem for an even wider feed
+        'feed': 'none', // Allow full width
         'sidebar': '20rem',
       },
       minHeight: {
         'card': '5rem',
       },
       gridTemplateColumns: {
-        'feed': 'auto 1fr',
+        'layout': 'auto 1fr',
       },
       // Add border styles for more defined edges
       borderWidth: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Newsevent from './Newsevent';
+import NewsEvent from './NewsEvent';
 import { fetchevents, getChannelBySlug } from '../services/newsService';
 import { event, Channel } from '../types'; // Ensure Channel type is imported
 
@@ -79,15 +79,15 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ categorySlug, specialView }) => {
   });
 
   return (
-    <div className="max-w-feed mx-auto px-4 sm:px-6 py-2 bg-paper-50 dark:bg-ink-900 min-h-full border border-paper-200 dark:border-ink-700 shadow-newspaper rounded-sm relative -mt-8">
+    <div className="relative -mt-8 w-full">
       {/* Glassy header that spans the entire feed */}
-      <div className="sticky -top-4 sm:-mx-6 px-4 sm:px-6 pt-1 pb-5 backdrop-blur-md bg-paper-50/90 dark:bg-ink-900/90 border-b border-paper-300 dark:border-ink-700 z-10 shadow-sm mb-6">
+      <div className="sticky top-0 inset-x-0 px-4 sm:px-6 pt-6 pb-5 backdrop-blur-md bg-paper-50/90 dark:bg-ink-900/90 border-b border-paper-300 dark:border-ink-700 z-10 shadow-sm mb-6">
         <div className="flex flex-col mb-4 mt-4">
-          <span className="text-ink-500 dark:text-paper-400 text-sm mb-1 font-mono">{today}</span>
+          <span className="text-ink-500 dark:text-paper-400 text-sm mb-1 font-mono leading-relaxed">{today}</span>
           <h1 className="text-4xl sm:text-5xl font-display font-bold text-ink-900 dark:text-paper-50 mb-1 leading-tight">
             {currentChannel?.name}
           </h1>
-          <div className="flex items-center text-sm text-ink-600 dark:text-paper-400 font-sans">
+          <div className="flex items-center text-sm text-ink-600 dark:text-paper-400 font-sans leading-relaxed">
             <span>Last updated: <span className="font-mono">{lastUpdated}</span></span>
             <span className="mx-2">•</span>
             <span className="italic">{currentChannel?.description}</span>
@@ -136,15 +136,15 @@ const NewsFeed: React.FC<NewsFeedProps> = ({ categorySlug, specialView }) => {
         </div>
       ) : (
         <>
-          <div className="space-y-5 pt-2" id="feed-items-container"> {/* Added pt-2 to create some space after the sticky header */}
+          <div className="flex flex-col items-start pt-4 space-y-0 px-6 sm:px-8" id="feed-items-container"> {/* Left-aligned feed cards with minimal vertical spacing */}
             {currentevents.length > 0 ? (
               currentevents.map((event, index) => (
-                <Newsevent 
-                  key={event.id} 
-                  event={event} 
-                  channelName={currentChannel?.name || "Personal"}
-                  animationDelay={index * 80}
-                />
+                <div key={event.id} className="w-full max-w-4xl p-4">
+                  <NewsEvent 
+                    event={event}
+                    animationDelay={index * 80}
+                  />
+                </div>
               ))
             ) : (
               <div className="bg-paper-100 dark:bg-ink-800 p-8 rounded-lg border border-paper-300 dark:border-ink-700 text-center my-8">

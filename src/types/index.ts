@@ -28,7 +28,7 @@ export interface NewsEvent {
   readingProgress?: number;
 }
 
-// Remove redundant 'event' interface since it's now unified with NewsEvent
+export type event = NewsEvent;
 
 export interface Channel {
   id: string;

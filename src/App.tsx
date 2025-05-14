@@ -28,25 +28,21 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add('dark-mode');
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark-mode');
+      document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
 
   return (
     <Router>
-      <div className={`h-screen flex overflow-hidden bg-gray-100 dark:bg-ink-900 text-gray-800 dark:text-paper-200`}>
+      <div className="h-screen flex overflow-hidden bg-gray-100 dark:bg-ink-900 text-gray-800 dark:text-paper-200">
         <Sidebar 
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
         />
-        {/* Main content area */}
-        <main className="flex-1 bg-grey-100 dark:bg-ink-900 overflow-y-auto p-4">
+        <main className="flex-1 flex flex-col bg-paper-50 dark:bg-ink-900 overflow-y-auto">
           <AppRoutes />
-          
-          {/* Add chat input at the bottom similar to sample */}
-          {/* Removed the chat input box */}
         </main>
       </div>
     </Router>

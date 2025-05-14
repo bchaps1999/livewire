@@ -3,13 +3,12 @@ import { event } from '../types';
 
 interface NewseventProps {
   event: event;
-  channelName?: string;
   animationDelay?: number;
 }
 
-const getCategoryClass = (category: string): string => {
-  // Match category to background colors
-  const lowerCategory = category.toLowerCase();
+const getCategoryClass = (category?: string): string => {
+  // Match category to background colors, handle undefined
+  const lowerCategory = (category || '').toLowerCase();
   
   if (lowerCategory.includes('climate') || lowerCategory.includes('environment')) {
     return 'bg-climate text-white';
@@ -24,7 +23,7 @@ const getCategoryClass = (category: string): string => {
   return 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white';
 };
 
-const Newsevent: React.FC<NewseventProps> = ({ event, channelName, animationDelay = 0 }) => {
+const NewsEvent: React.FC<NewseventProps> = ({ event, animationDelay = 0 }) => {
   const [bookmarked, setBookmarked] = useState(false);
   const [expanded, setExpanded] = useState(false);
   
@@ -36,15 +35,15 @@ const Newsevent: React.FC<NewseventProps> = ({ event, channelName, animationDela
   
   return (
     <div 
-      className="bg-white dark:bg-ink-800 rounded-lg border border-paper-300 dark:border-ink-700 overflow-hidden mb-5 animate-fade-in-up shadow-newspaper hover:shadow-newspaper-lg transition-all duration-200"
+      className="bg-white dark:bg-ink-800 rounded-lg overflow-hidden mb-0 animate-fade-in-up shadow-feed-item transition-all duration-200"
       style={animationStyle}
     >
       <div className="flex flex-col sm:flex-row">
-        {event.image && (
+        {event.imageUrl && (
           <div className="sm:w-40 md:w-48 flex-shrink-0">
             <div className="relative h-28 sm:h-full">
               <img 
-                src={event.image} 
+                src={event.imageUrl} 
                 alt={event.title} 
                 className="w-full h-full object-cover"
               />
@@ -122,4 +121,4 @@ const Newsevent: React.FC<NewseventProps> = ({ event, channelName, animationDela
   );
 };
 
-export default Newsevent;
+export default NewsEvent;

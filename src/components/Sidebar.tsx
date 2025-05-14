@@ -77,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) => {
   ];
   
   return (
-    <aside className="bg-paper-50 dark:bg-ink-900 w-64 flex-shrink-0 border-r border-paper-200 dark:border-ink-700 flex flex-col overflow-y-auto transition-all duration-300 shadow-lg p-6 space-y-6">
+    <aside className="bg-paper-50 dark:bg-ink-900 w-80 flex-shrink-0 border-r border-paper-200 dark:border-ink-700 flex flex-col overflow-y-auto transition-all duration-300 p-6 space-y-6"> {/* Increased width from w-72 to w-80 */}
       {/* Logo */}
       <div className="flex items-center space-x-3">
         <div className="p-2 bg-green-700 dark:bg-green-600 rounded-lg shadow-md">

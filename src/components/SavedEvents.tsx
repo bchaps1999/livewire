@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getSavedevents, saveevent } from '../services/newsService';
 import { event } from '../types';
-import Newsevent from './Newsevent';
+import NewsEvent from './NewsEvent';
 
 const SavedEvents: React.FC = () => {
   const [events, setevents] = useState<event[]>([]);
@@ -81,7 +81,7 @@ const SavedEvents: React.FC = () => {
       ) : (
         <div className="space-y-6">
           {events.map((event, index) => (
-            <Newsevent 
+            <NewsEvent 
               key={event.id} 
               event={{...event, isSaved: true}}
               channelName="Reading List"
