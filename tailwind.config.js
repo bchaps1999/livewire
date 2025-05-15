@@ -9,9 +9,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Baskerville', 'Georgia', 'serif'],
+        serif: ['Outfit', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        display: ['Baskerville', 'Georgia', 'serif'], // For large headings
+        display: ['Outfit', 'sans-serif'], // For large headings
+        outfit: ['Outfit', 'sans-serif'], // Logo font
       },
       colors: {
         paper: {
@@ -84,22 +85,22 @@ export default {
               },
             },
             h1: {
-              fontFamily: 'Playfair Display, Georgia, serif',
+              fontFamily: 'Outfit, sans-serif',
               fontWeight: '700',
               letterSpacing: '-0.025em',
             },
             h2: {
-              fontFamily: 'Playfair Display, Georgia, serif',
+              fontFamily: 'Outfit, sans-serif',
               fontWeight: '700',
               letterSpacing: '-0.025em',
             },
             h3: {
-              fontFamily: 'Playfair Display, Georgia, serif',
+              fontFamily: 'Outfit, sans-serif',
               fontWeight: '600',
               letterSpacing: '-0.025em',
             },
             blockquote: {
-              fontFamily: 'Playfair Display, Georgia, serif',
+              fontFamily: 'Outfit, sans-serif',
               fontStyle: 'italic',
               fontWeight: '500',
               borderLeftColor: '#B6AA96',

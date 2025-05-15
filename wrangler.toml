@@ -1,0 +1,15 @@
+name = "waveform"
+compatibility_date = "2023-12-01"
+# main = "./functions/api/_worker.js"
+
+# Variables defined in .dev.vars will be loaded with wrangler dev
+[vars]
+# API keys will be loaded from .dev.vars
+
+# Functions configuration
+[dev]
+port = 8788 # This must match the port in vite.config.ts proxy
+
+# Specify site configuration
+[site]
+bucket = "./dist"

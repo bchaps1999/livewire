@@ -83,6 +83,32 @@
     @apply font-serif italic text-lg leading-relaxed p-4 pl-6 border-l-4 border-accent-gold/70 bg-paper-100 dark:bg-ink-800 text-ink-700 dark:text-paper-300;
   }
   
+  /* Image handling styles */
+  .image-loading {
+    background-color: #f0f0f0;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .image-error {
+    min-height: 100px;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+  
+  .image-error::after {
+    content: "Image not available";
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
   /* Link styling */
   .event-link {
     @apply text-accent-blue dark:text-accent-blue/90 hover:underline underline-offset-2 decoration-1 decoration-accent-blue/70 dark:decoration-accent-blue/60 transition-all;

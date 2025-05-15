@@ -1,4 +1,5 @@
-import { event, Channel } from '../types';
+import { NewsEvent, Channel } from '../types';
+import { fetchTopStories } from './apiClient';
 
 // Mock channels data
 const channels: Channel[] = [
@@ -12,8 +13,8 @@ const channels: Channel[] = [
   { id: '8', name: 'World', slug: 'world', icon: 'fa-globe-americas' }
 ];
 
-// Mock events data - convert from the provided JSON format to our event type
-const mockevents: event[] = [
+// Mock events data remains as fallback
+const mockEvents: NewsEvent[] = [
   {
     id: "1",
     title: "Global Climate Summit Yields New Emissions Targets",
@@ -104,70 +105,53 @@ export const getChannelBySlug = (slug: string): Channel | undefined => {
   return channels.find(channel => channel.slug === slug);
 };
 
-export const fetchevents = async (categorySlug?: string): Promise<event[]> => {
-  // In a real application, this would be an API call
+export const fetchEvents = async (categorySlug?: string): Promise<NewsEvent[]> => {
   try {
-    // Simulate a network request
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        try {
-          let events = [...mockevents];
-          
-          if (categorySlug) {
-            events = events.filter(event => 
-              event.category?.toLowerCase() === categorySlug.toLowerCase()
-            );
-          }
-          
-          // Randomly fail 5% of the time to demonstrate error handling
-          if (Math.random() < 0.05) {
-            throw new Error('Random network error occurred');
-          }
-          
-          resolve(events);
-        } catch (error) {
-          reject(error);
-        }
-      }, 500);
+    // Use the API client to fetch real data
+    const response = await fetchTopStories({
+      limit: 20,
+      tags: categorySlug ? [categorySlug] : undefined
     });
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    throw new Error(error instanceof Error 
-      ? `Failed to fetch events: ${error.message}` 
-      : 'Failed to fetch events'
-    );
-  }
-};
-
-export const saveevent = async (eventId: string, isSaved: boolean = true): Promise<void> => {
-  try {
-    console.log(`event ${eventId} ${isSaved ? 'saved' : 'unsaved'}`);
     
-    const saved = await getSavedevents();
-    
-    if (isSaved) {
-      // Add to saved if not already there
-      const eventToSave = mockevents.find(a => a.id === eventId);
-      if (eventToSave && !saved.find(a => a.id === eventId)) {
-        const updatedSaved = [...saved, {...eventToSave, isSaved: true}];
-        localStorage.setItem('savedNewsevents', JSON.stringify(updatedSaved));
+    if (response.error || !response.data) {
+      // Fallback to mock data if API fails
+      console.warn('API request failed, using mock data:', response.error);
+      let events = [...mockEvents];
+      
+      if (categorySlug) {
+        events = events.filter(event => 
+          event.category?.toLowerCase() === categorySlug.toLowerCase()
+        );
       }
-    } else {
-      // Remove from saved
-      const updatedSaved = saved.filter(a => a.id !== eventId);
-      localStorage.setItem('savedNewsevents', JSON.stringify(updatedSaved));
+      
+      return events;
     }
     
-    return Promise.resolve();
+    // Handle the response data structure properly
+    const events = response.data.events || [];
+    console.log('Received events from API:', events);
+    return events;
   } catch (error) {
-    console.error('Error saving event:', error);
-    throw new Error('Failed to save event');
+    console.error('Error fetching events:', error);
+    // Fallback to mock data
+    let events = [...mockEvents];
+    if (categorySlug) {
+      events = events.filter(event => 
+        event.category?.toLowerCase() === categorySlug.toLowerCase()
+      );
+    }
+    return events;
   }
 };
 
-export const getSavedevents = async (): Promise<event[]> => {
-  // Retrieve saved events from localStorage
-  console.log('getSavedevents called');
-  const saved = localStorage.getItem('savedNewsevents');
-  return saved ? JSON.parse(saved) : [];
+// Note: We're not using saved events in this application anymore, 
+// but leaving these stubs for compatibility with any existing code
+export const saveEvent = async (eventId: string, isSaved: boolean = true): Promise<void> => {
+  console.log(`Event ${eventId} ${isSaved ? 'saved' : 'unsaved'} - Feature removed`);
+  return Promise.resolve();
+};
+
+export const getSavedEvents = async (): Promise<NewsEvent[]> => {
+  console.log('getSavedEvents called - Feature removed');
+  return [];
 };

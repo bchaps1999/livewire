@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 import NewsFeed from './components/NewsFeed';
-import SavedEvents from './components/SavedEvents';
 import NotFound from './components/NotFound';
 
 // CategoryNews component wrapper that uses URL parameters
@@ -14,8 +13,8 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<NewsFeed />} />
+      <Route path="/breaking" element={<NewsFeed specialView="breaking-news" />} />
       <Route path="/category/:categorySlug" element={<CategoryNewsWrapper />} />
-      <Route path="/saved" element={<SavedEvents />} />
       <Route path="/annotated" element={<NewsFeed specialView="annotated" />} /> 
       <Route path="*" element={<NotFound />} />
     </Routes>

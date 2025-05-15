@@ -1,8 +1,8 @@
-# LiveWire
+# Waveform
 
 A modern news aggregation application.
 
-![LiveWire Screenshot](https://via.placeholder.com/800x450.png?text=LiveWire+News+App)
+![Waveform Screenshot](https://via.placeholder.com/800x450.png?text=Waveform+News+App)
 
 ## Features
 

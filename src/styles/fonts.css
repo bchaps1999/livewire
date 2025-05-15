@@ -4,3 +4,5 @@
 /* Using Baskerville as the serif type with Georgia and native fallbacks */
 /* No external import since Baskerville is system */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+/* Import Outfit Regular, Medium, and SemiBold */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap');
